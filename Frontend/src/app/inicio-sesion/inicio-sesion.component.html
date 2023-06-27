@@ -1,0 +1,26 @@
+<div class="container py-5">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-md-4 mb-4 mb-md-0">
+      <div class="card ">
+        <div class="card-body">
+          <h3 class="text-center">Inicio de Sesión</h3>
+          <form class="needs-validation mt-4" (ngSubmit)="submitInicioSesion()">
+            <div class=" was-validated mb-3">
+              <label for="email" class="form-label form-label-lg">Correo electrónico</label>
+              <input type="email"  class="form-control form-control-lg" id="email" name="email" required>
+              <div class="invalid-feedback">Por favor escriba su correo</div>
+            </div>
+            <div class="was-validated mb-3">
+              <label for="password" class="form-label">Contraseña</label>
+              <input type="password" class="form-control form-control-lg" id="password" name="password" required>
+              <div class="invalid-feedback">Por favor escriba su contraseña</div>
+            </div>
+            <div class="mt-3 text-center">
+              <button type="button" class="btn btn-secondary btn-lg rounded-5" routerLink="/registro"  style="margin-inline: 20px;">Registro</button>
+              <button type="submit" class="btn btn-secondary btn-lg rounded-5" routerLink="/perfil">Iniciar sesión</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
