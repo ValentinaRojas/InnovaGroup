@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NavbarLogRegComponent } from './navbar-log-reg/navbar-log-reg.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { NavbarLogRegComponent } from './navbar-log-reg/navbar-log-reg.component
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
