@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RegistroComponent } from './registro/registro.component';
-import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
-import { HomeComponent } from './home/home.component';
-import { PerfilComponent } from './perfil/perfil.component';
+
+//Componentes
+import { RegistroComponent } from './components/registro/registro.component';
+import { InicioSesionComponent } from './components/inicio-sesion/inicio-sesion.component';
+import { HomeComponent } from './components/home/home.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'inicio-sesion', pathMatch: 'full' },

@@ -1,15 +1,29 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
-import { RegistroComponent } from './registro/registro.component';
-import { HomeComponent } from './home/home.component';
-import { PerfilComponent } from './perfil/perfil.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { NavbarLogRegComponent } from './navbar-log-reg/navbar-log-reg.component';
+
+//Modulos
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+//Componentes
+import { InicioSesionComponent } from './components/inicio-sesion/inicio-sesion.component';
+import { RegistroComponent } from './components/registro/registro.component';
+import { HomeComponent } from './components/home/home.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NavigationComponent } from './components/navigation/navigation.component';
+
+import { UsersService } from './services/users.service';
+import { SpinnerComponent } from './shared/spinner/spinner.component';
+
 
 @NgModule({
   declarations: [
@@ -19,14 +33,27 @@ import { ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     PerfilComponent,
     NavbarComponent,
-    NavbarLogRegComponent
+    NavigationComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    FormsModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot({
+      timeOut: 4000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    }
+
+    ), // ToastrModule added
   ],
-  providers: [],
+  providers: [
+    UsersService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

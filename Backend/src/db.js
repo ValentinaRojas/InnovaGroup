@@ -6,7 +6,7 @@ export const connection = ADODB.open('Provider=Microsoft.ACE.OLEDB.12.0;Data Sou
 export const pool = createPool({
    host: 'localhost',
    user: 'root',
-   password: 'juan2023',
+   password: '123456789.',
    port:3306,
    database: 'innovagroup'
 })

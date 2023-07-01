@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-body {
+html, body {
   /*background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6), url(''))
   background-image: url('');
   background-repeat: no-repeat;
@@ -9,6 +9,27 @@ body {
   background: #215f00;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #e4e4d9, #215f00);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #e4e4d9, #215f00); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  height: 100%;
 
+
+}
+
+
+.wrapper{
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo{
+  height: 130px;
+  margin-bottom: 10px;
+}
+
+.body{
+  max-width: 300px;
+  width: 100%;
+  text-align: center;
 }
 
