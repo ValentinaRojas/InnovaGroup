@@ -5,6 +5,15 @@
     <div class="row g-2">
       <div class="col">
         <div class="form-floating mb-3 mt-3">
+          <input
+            type="number"
+            [(ngModel)]="document_type_id"
+            class="form-control"
+            placeholder="Ingrese el numero de documento"
+          />
+          <label>Tipo de documento</label>
+        </div>
+        <!--<div class="form-floating mb-3 mt-3">
           <select
             class="form-select"
             id="floatingSelect"
@@ -16,7 +25,8 @@
             <option value="3">Pasaporte</option>
           </select>
           <label for="floatingSelect">Tipo de documento</label>
-        </div>
+        </div>-->
+
       </div>
       <div class="col-md">
         <div class="form-floating mb-3 mt-3">
@@ -95,6 +105,15 @@
         placeholder="Ingrese direccion de domicilio"
       />
       <label>Direccion domicilio</label>
+    </div>
+    <div class="form-floating mb-3 mt-3">
+      <input
+        type="number"
+        [(ngModel)]="document_type_id"
+        class="form-control"
+        placeholder="Ingrese el numero de documento"
+      />
+      <label>Tipo de Perfil</label>
     </div>
     <div class="form-floating mb-3 mt-3">
       <input

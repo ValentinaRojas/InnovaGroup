@@ -62,10 +62,10 @@ export class RegistroComponent implements OnInit {
 
     this._userService.registro(user).subscribe(data => {
       this.loading = false;
-      console.log("El usuariofue registrado con exito");
+      console.log("El usuario fue registrado con exito");
       this.toastr.success(`El usuario ${this.user_name} fue registrado con exito`, "Usuario registrado");
       this.router.navigate(['/inicio-sesion']);
-    }, (event: HttpErrorResponse) =>{
+    }, (event: HttpErrorResponse) => {
       this.loading = false;
       if(event.error.msg){
         this.toastr.error(event.error.msg, 'Error');
@@ -73,8 +73,6 @@ export class RegistroComponent implements OnInit {
         this.toastr.error('Ocurrio un error ', 'Error');
       }
       console.log(event.error.msg);
-
-
     } )
 
 
