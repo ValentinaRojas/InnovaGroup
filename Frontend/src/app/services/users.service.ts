@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { User } from '../models/User'
+import { UserLogin } from '../models/UserLogin'
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -12,19 +13,21 @@ export class UsersService {
 
 
   private APP_URL:string;
-  private API_URI:string;
 
   constructor(private http: HttpClient) {
-    this.APP_URL = 'http://localhost:3000/',
-    this.API_URI = 'api/users'
+    this.APP_URL = 'http://localhost:3000/api'
   }
 
   registro(user: User): Observable<any>{
-    return this.http.post(`${this.APP_URL}${this.API_URI}`, user);
-
+    return this.http.post(`${this.APP_URL}/users`, user);
   }
 
-  getUsers() {
+  //Recibe un usuario como parámetro y va a devolver un observable con un string que es el token
+  inicio_sesion(userlogin: UserLogin): Observable<string> {
+    return this.http.post<string>(`${this.APP_URL}/login`, userlogin);
+  }
+
+  /*getUsers() {
     return this.http.get(`${this.API_URI}/users`);
   }
 
@@ -42,6 +45,6 @@ export class UsersService {
 
   getRoles():Observable<any> {
     return this.http.get(`${this.API_URI}/roles`);
-  }
+  }*/
 
 }

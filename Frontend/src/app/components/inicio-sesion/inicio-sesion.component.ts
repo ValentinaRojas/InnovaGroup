@@ -1,41 +1,77 @@
 import { Component, OnInit } from '@angular/core';
 
-import { UsersService } from '../../services/users.service'
+import { ToastrService } from 'ngx-toastr';
+
+import { UsersService } from '../../services/users.service';
+import { UserLogin } from 'src/app/models/UserLogin';
+import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-inicio-sesion',
   templateUrl: './inicio-sesion.component.html',
   styleUrls: ['./inicio-sesion.component.css']
 })
+
 export class InicioSesionComponent implements OnInit {
 
-  users: any = [];
+  user_name: string = '';
+  password: string = '';
+  loading: boolean = false;
 
-  inicioSesion: any = {};
 
-  submitInicioSesion() {
-    // Aquí puedes manejar la lógica para enviar los datos de inicio de sesión al servidor
-    console.log('Inicio de Sesión:', this.inicioSesion);
+  //Convenciones, los servicios suelen comenzar con _
+  constructor(private toastr: ToastrService , private _userService: UsersService,
+    private router: Router){
+
   }
 
+  ngOnInit(): void {
 
-
-  constructor(private userService: UsersService) {
   }
 
+  inicio_sesion() {
 
-  ngOnInit() {
-    this.userService.getUsers().subscribe(
-      res => {
-        this.users = res;
+    //Validamos que el usuario ingrese datos
+
+    if(this.user_name == '' || this.password == ''){
+      this.toastr.error('Todos los campos son obligatorios', 'Error');
+      return
+    }
+
+    //Creamos el objeto(body)
+    const userlogin: UserLogin = {
+      user_name: this.user_name,
+      password: this.password
+    }
+
+
+
+    this.loading = true;
+    this._userService.inicio_sesion(userlogin).subscribe({
+      next: (data) => {
+        //token = JSON.stringify(token);
+        localStorage.setItem('token', data);
+        console.log(data);
+        //this.router.navigate(['/home']);
       },
-      err => console.log(err)
-    )
-
-    this.userService.getRoles().subscribe(
-      res => console.log(res),
-      err => console.log(err)
-    )
-
+      error: (e: HttpErrorResponse) => {
+        this.msjError(e);
+        this.loading = false;
+      }
+    })
   }
+
+
+  msjError(e: HttpErrorResponse){
+    this.loading = false;
+      if(e.error.msg){
+        this.toastr.error(e.error.msg, 'Error');
+      }else{
+        this.toastr.error('Ocurrio un error ', 'Error');
+      }
+      console.log(e.error.msg)
+  }
+
+
 }

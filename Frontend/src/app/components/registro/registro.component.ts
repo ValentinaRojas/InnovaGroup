@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/User';
-import { IRol } from '../../models/Rol';
 import { UsersService } from '../../services/users.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { RolService } from 'src/app/services/rol.service';
+import { Rol } from 'src/app/models/Rol';
+import { TipoDocService } from 'src/app/services/tipo_doc.service';
+import { TypeDoc } from 'src/app/models/TypeDoc';
 
 @Component({
   selector: 'app-registro',
@@ -26,11 +29,34 @@ export class RegistroComponent implements OnInit {
   password: string = '';
   loading: boolean = false;
 
+  listRol: Rol[] = [];
+  listTypeDoc: TypeDoc[] = []
+
+
   constructor(private toastr: ToastrService,
     private _userService: UsersService,
+    private _rolService: RolService,
+    private _typeDocService: TipoDocService,
     private router: Router){}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getRoles();
+    this.getTypeDoc();
+  }
+
+  getRoles(){
+    this._rolService.getRoles().subscribe(data => {
+      this.listRol = (data);
+      console.log(data);
+    })
+  }
+
+  getTypeDoc(){
+    this._typeDocService.getTypeDoc().subscribe(data => {
+      this.listTypeDoc = (data);
+      console.log(data);
+    })
+  }
 
   addUser(){
     //Validar que el usuario ingrese valores
@@ -60,7 +86,23 @@ export class RegistroComponent implements OnInit {
 
     this.loading = true;
 
-    this._userService.registro(user).subscribe(data => {
+    this._userService.registro(user).subscribe({
+      next: (v) => {
+        this.loading = false;
+        console.log("El usuario fue registrado con exito");
+        this.toastr.success(`El usuario ${this.user_name} fue registrado con exito`, "Usuario registrado");
+        this.router.navigate(['/inicio-sesion']);
+      },
+      error: (e: HttpErrorResponse) => {
+        this.loading = false;
+        this.msjError(e);
+      },
+      complete: () => console.info('complete')
+  })
+
+
+
+    /*this._userService.registro(user).subscribe(data => {
       this.loading = false;
       console.log("El usuario fue registrado con exito");
       this.toastr.success(`El usuario ${this.user_name} fue registrado con exito`, "Usuario registrado");
@@ -73,9 +115,17 @@ export class RegistroComponent implements OnInit {
         this.toastr.error('Ocurrio un error ', 'Error');
       }
       console.log(event.error.msg);
-    } )
+    } )*/
+  }
 
-
+  msjError(e: HttpErrorResponse){
+    this.loading = false;
+      if(e.error.msg){
+        this.toastr.error(e.error.msg, 'Error');
+      }else{
+        this.toastr.error('Ocurrio un error ', 'Error');
+      }
+      console.log(e.error.msg)
   }
 
 

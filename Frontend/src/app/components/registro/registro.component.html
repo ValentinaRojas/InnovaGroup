@@ -5,27 +5,15 @@
     <div class="row g-2">
       <div class="col">
         <div class="form-floating mb-3 mt-3">
-          <input
-            type="number"
-            [(ngModel)]="document_type_id"
-            class="form-control"
-            placeholder="Ingrese el numero de documento"
-          />
-          <label>Tipo de documento</label>
-        </div>
-        <!--<div class="form-floating mb-3 mt-3">
           <select
             class="form-select"
             id="floatingSelect"
             aria-label="Floating label select example"
           >
-            <option selected></option>
-            <option value="1">TI</option>
-            <option value="2">CC</option>
-            <option value="3">Pasaporte</option>
+            <option *ngFor="let i of listTypeDoc" [value]="i.id"> {{i.type}}  </option>
           </select>
           <label for="floatingSelect">Tipo de documento</label>
-        </div>-->
+        </div>
 
       </div>
       <div class="col-md">
@@ -107,12 +95,13 @@
       <label>Direccion domicilio</label>
     </div>
     <div class="form-floating mb-3 mt-3">
-      <input
-        type="number"
-        [(ngModel)]="document_type_id"
-        class="form-control"
-        placeholder="Ingrese el numero de documento"
-      />
+      <select
+            class="form-select"
+            id="floatingSelect"
+            aria-label="Floating label select example"
+          >
+            <option *ngFor="let i of listRol" [value]="i.id"> {{i.rol}}  </option>
+          </select>
       <label>Tipo de Perfil</label>
     </div>
     <div class="form-floating mb-3 mt-3">
