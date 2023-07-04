@@ -24,7 +24,12 @@ export class UsersService {
 
   //Recibe un usuario como parámetro y va a devolver un observable con un string que es el token
   inicio_sesion(userlogin: UserLogin): Observable<string> {
+    console.log(userlogin);
     return this.http.post<string>(`${this.APP_URL}/login`, userlogin);
+  }
+
+  getUser(id: string): Observable<User[]> {
+    return this.http.get<User[]>(`${this.APP_URL}/users/${id}`);
   }
 
   /*getUsers() {

@@ -2,6 +2,7 @@
   <div *ngIf="!loading" class="body">
     <img class="logo" src="../../../assets/images/login.png" alt="img login" />
     <h3>Registrar Usuario</h3>
+    <div class="example-1 scrollbar-deep-purple bordered-deep-purple thin">
     <div class="row g-2">
       <div class="col">
         <div class="form-floating mb-3 mt-3">
@@ -122,13 +123,15 @@
       />
       <label>Contraseña</label>
     </div>
+  </div>
     <div class="d-grid gap-2 mb-3">
       <button type="button" (click)="addUser()" class="btn btn-primary btn-lg">
         Aceptar
       </button>
     </div>
     <a routerLink="/inicio-sesion">Volver</a>
-  </div>
+
+</div>
   <app-spinner *ngIf="loading"></app-spinner>
 </div>
 

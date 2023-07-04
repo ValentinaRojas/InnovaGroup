@@ -46,14 +46,14 @@ export class InicioSesionComponent implements OnInit {
     }
 
 
-
     this.loading = true;
     this._userService.inicio_sesion(userlogin).subscribe({
       next: (data) => {
+        console.log(data);
         //token = JSON.stringify(token);
         localStorage.setItem('token', data);
         console.log(data);
-        //this.router.navigate(['/home']);
+        this.router.navigate(['/perfil']);
       },
       error: (e: HttpErrorResponse) => {
         this.msjError(e);
