@@ -85,7 +85,9 @@ CREATE TABLE `users` (
   `user_name` varchar(45) NOT NULL,
   `password` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `user_name_UNIQUE` (`user_name`)
+  UNIQUE KEY `user_name_UNIQUE` (`user_name`),
+  CONSTRAINT `users_rol_id_fkey` FOREIGN KEY (`rol_id`) REFERENCES roles(`id`),
+  CONSTRAINT `users_document_id_fkey` FOREIGN KEY (`document_type_id`) REFERENCES document_type(`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
