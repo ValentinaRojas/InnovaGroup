@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 //Modulos
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -23,6 +23,7 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 
 import { UsersService } from './services/users.service';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
+import { AddTokenInterceptor } from './utils/add-token.interceptor';
 
 
 @NgModule({
@@ -53,6 +54,7 @@ import { SpinnerComponent } from './shared/spinner/spinner.component';
   ],
   providers: [
     UsersService,
+    {provide:HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })
