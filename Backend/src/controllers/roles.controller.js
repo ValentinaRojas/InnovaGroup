@@ -2,7 +2,7 @@ import { pool } from "../db.js";
 
 export const getRoles = async (req, res) => {
     try {
-        const [rows] = await pool.query('SELECT * FROM roles')
+        const [rows] = await pool.query('SELECT * FROM roles WHERE rol <> "Administrador";')
         res.json(rows)
 
     } catch (error) {
