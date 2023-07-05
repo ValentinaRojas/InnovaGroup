@@ -1,0 +1,279 @@
+{
+	"info": {
+		"_postman_id": "328c99d6-bcd6-4a6a-91ff-d72760250bba",
+		"name": "Integration Testing",
+		"description": "Postman allows you to test out our APIs [using simple Javascript code](https://postman.postman.co/workspace/API-Visualizer-Template-~6311738d-2e70-441f-ae12-78caf078c5b7/collection/22517504-c60852f9-f785-46f6-8917-11ccbc3fa316?ctx=documentation). You can evaluate your responses including their bodies, headers, cookies using the [ChaiJS BDD](https://www.chaijs.com/api/bdd/) syntax.\n\nThis collection showcases how you can do Integration testing on your APIs using Postman.\n\nTo get started, head over to the first request in the collection, click on `Send`. Once you receive the response, you can see the results in the `Test Results` tab in the response section. Feel free to edit the test scripts to test your APIs.\n\nYou can find the full Postman Sandbox API reference [here](https://learning.postman.com/docs/sending-requests/grpc/postman-sandbox-api/#writing-assertions).\n\n<img src=\"https://content.pstmn.io/52b47981-dc82-4cfc-a9ac-e50a48d7f101/aW1hZ2UucG5n\" alt=\"pm.test%20syntax\" width=\"689\" height=\"99\">\n\n<img src=\"https://content.pstmn.io/d7c1a57a-aa8f-49d0-8752-276cc25f40d8/aW1hZ2UucG5n\" alt=\"chai%20expect%20for%20assertion\" width=\"533\" height=\"67\">",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25798465"
+	},
+	"item": [
+		{
+			"name": "roles",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/roles",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"roles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "users",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"document_type_id\":1,\r\n    \"Numero_de_documento\":1193463952,\r\n    \"Nombre1\":\"Juan\",\r\n    \"Nombre2\":\"\",\r\n    \"Apellido1\":\"Vasquez\",\r\n    \"Apellido2\":\"\",\r\n    \"rol_id\":1,\r\n    \"Fecha_nacimiento\":\"2000-09-30\",\r\n    \"Direccion\":\"mi casa\",\r\n    \"user_name\":\"jocada18\",\r\n    \"password\":\"juan2023\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJqb2NhZGExMSIsImlhdCI6MTY4Nzg4OTU3OCwiZXhwIjoxNjg3ODkzMTc4fQ.GepFajqt_6RFU9J-WLI4z5RRU4TPA-SBUGQDz9t2KLA\"",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_name\":\"jocada11\",\r\n    \"password\":\"juan2023\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "users",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyMywiaWF0IjoxNjg4NTE3OTc1LCJleHAiOjE2ODg1MjE1NzV9.UqakpdBGso1j1zJORP0Penyx7iLCqseaiazhwKAXnSY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"document_type_id\":23,\r\n    \"Numero_de_documento\":1193463952,\r\n    \"Nombre1\":\"Juan\",\r\n    \"Nombre2\":\"\",\r\n    \"Apellido1\":\"Vasquez\",\r\n    \"Apellido2\":\"\",\r\n    \"rol_id\":5,\r\n    \"Fecha_nacimiento\":\"2000-09-30\",\r\n    \"Direccion\":\"mi casa\",\r\n    \"user_name\":\"jocada12\",\r\n    \"password\":\"juan2023\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"document_type_id\":23,\r\n    \"Numero_de_documento\":1193463952,\r\n    \"Nombre1\":\"Juan\",\r\n    \"Nombre2\":\"\",\r\n    \"Apellido1\":\"Vasquez\",\r\n    \"Apellido2\":\"\",\r\n    \"rol_id\":5,\r\n    \"Fecha_nacimiento\":\"2000-09-30\",\r\n    \"Direccion\":\"mi casa\",\r\n    \"user_name\":\"jocada12\",\r\n    \"password\":\"juan2023\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/users/20",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						"20"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user-update",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyNCwiaWF0IjoxNjg4NTI0NTg5LCJleHAiOjE2ODg1MjgxODl9.pLBoP0RTWGvhKHx9gFzwUGv1qgMmRJSjk-GGtPD23OA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n    \"Fecha_nacimiento\":\"2001-09-30\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "document_type",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "hola",
+							"value": "holatu",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/document_type",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"document_type"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://postman-echo.com"
+		}
+	]
+}

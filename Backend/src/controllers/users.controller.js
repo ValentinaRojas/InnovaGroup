@@ -15,7 +15,7 @@ export const getUsers = async (req, res) => {
         const decoded = await verify(token, secret);
         console.log(decoded);
         req.user = decoded;
-        const [rows] = await pool.query('SELECT * FROM users',)
+        const [rows] = await pool.query('SELECT *, NULL as password FROM users',)
         res.json(rows)
 
       } catch (err) {
@@ -45,7 +45,7 @@ export const getUserbyid = async (req, res) => {
         const decoded = await verify(token, secret);
         console.log(decoded);
         req.user = decoded;
-        const [rows] = await pool.query('SELECT * FROM users WHERE id = ?', [req.params.id])
+        const [rows] = await pool.query('SELECT *, NULL as password FROM users WHERE id = ?', [req.params.id])
         res.json(rows)
 
       } catch (err) {
@@ -70,7 +70,6 @@ return res.status(200).json({message:'El rol de administrador solo se puede asig
     const [rowsa] = await pool.query('INSERT INTO users (document_type_id,Numero_de_documento,Nombre1,Nombre2,Apellido1,Apellido2,Fecha_nacimiento,Direccion,user_name,password,rol_id) VALUES (?,?,?,?,?,?,?,?,?,?,?);', [req.body.document_type_id, req.body.Numero_de_documento, req.body.Nombre1, req.body.Nombre2, req.body.Apellido1, req.body.Apellido2, req.body.Fecha_nacimiento, req.body.Direccion, req.body.user_name, password, req.body.rol_id])
     console.log(rowsa);
     res.status(200).json({ userid: rowsa.insertId });
-
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: error.message })
@@ -105,7 +104,7 @@ export const UpdateUser = async (req, res) => {
         if (result.affectedRows == 0) {
           return res.status(404).json({ message: 'User not found' })
         }
-        res.status(200).json({ result })
+        res.status(200).json({message:"ok" })
 
       } catch (err) {
         res.status(403).json({message: err.message});
