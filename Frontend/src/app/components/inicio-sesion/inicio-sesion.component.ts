@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { ToastrService } from 'ngx-toastr';
 
@@ -6,6 +6,7 @@ import { UsersService } from '../../services/users.service';
 import { UserLogin } from 'src/app/models/UserLogin';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-inicio-sesion',
@@ -13,11 +14,12 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./inicio-sesion.component.css']
 })
 
-export class InicioSesionComponent implements OnInit {
+export class InicioSesionComponent implements OnInit, OnDestroy {
 
   user_name: string = '';
   password: string = '';
   loading: boolean = false;
+  subRef$: Subscription | undefined;
 
 
   //Convenciones, los servicios suelen comenzar con _
@@ -47,10 +49,10 @@ export class InicioSesionComponent implements OnInit {
 
 
     this.loading = true;
-    this._userService.inicio_sesion(userlogin).subscribe({
+    this.subRef$ = this._userService.inicio_sesion(userlogin).subscribe({
       next: (data) => {
         console.log(data);
-        //token = JSON.stringify(token);
+        data = JSON.stringify(data);
         localStorage.setItem('token', data);
         console.log(data);
         this.router.navigate(['/perfil']);
@@ -62,6 +64,10 @@ export class InicioSesionComponent implements OnInit {
     })
   }
 
+  ngOnDestroy(){
+    if(this.subRef$){this.subRef$.unsubscribe();
+    }
+  }
 
   msjError(e: HttpErrorResponse){
     this.loading = false;

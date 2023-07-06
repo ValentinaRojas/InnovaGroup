@@ -17,7 +17,7 @@ import { TypeDoc } from 'src/app/models/TypeDoc';
 export class RegistroComponent implements OnInit {
 
   document_type_id: number = 0;
-  Numero_de_documento: number = 1;
+  Numero_de_documento: number = 0;
   Nombre1: string = '';
   Nombre2: string = '';
   Apellido1: string = '';
@@ -125,7 +125,7 @@ export class RegistroComponent implements OnInit {
       }else{
         this.toastr.error('Ocurrio un error ', 'Error');
       }
-      console.log(e.error.msg)
+    console.log(e.error.msg)
   }
 
 
