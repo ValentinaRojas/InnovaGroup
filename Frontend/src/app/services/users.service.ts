@@ -41,6 +41,11 @@ export class UsersService {
     return this.http.put(`${this.APP_URL}/users/${id}`, value);
   }
 
+  loggedIn(){
+    console.log('en loggedIn')
+    return !!localStorage.getItem('token');
+  }
+
 
 
   /*getUsers() {

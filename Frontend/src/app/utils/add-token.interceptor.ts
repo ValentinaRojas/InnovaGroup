@@ -18,12 +18,9 @@ export class AddTokenInterceptor implements HttpInterceptor {
 
     const token_body = JSON.parse(localStorage.getItem('token') || '{}');
     const token = token_body['token']
-    const token_value = token_body['userid']
+    //const token_value = token_body['userid']
 
     if(token){
-      console.log('get token', token);
-      console.log('hola');
-      console.log('prueba',token_value);
       request = request.clone({ setHeaders:{ Authorization: `Bearer ${token}`}})
     }
     return next.handle(request);

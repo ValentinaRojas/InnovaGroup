@@ -52,8 +52,8 @@ export class PerfilComponent implements OnInit {
 
     this.getTypeDoc();
     this.getRoles();
-    this.getUsers();
-    this.getUser(34);
+    //this.getUsers();
+    this.getUser(this.token);
     //this.updateUser()
   }
 
@@ -72,27 +72,25 @@ export class PerfilComponent implements OnInit {
     })
   }
 
-  getUsers(){
+  /*getUsers(){
     this._userService.getUsers().subscribe(data => {
       this.users = (data);
       console.log(data);
     })
-  }
+  }*/
 
 
+  token_body = JSON.parse(localStorage.getItem('token') || '{}');
+  token = this.token_body['userid'];
 
   getUser(id:number){
-    const token_body = JSON.parse(localStorage.getItem('token') || '{}');
-
-    if(token_body){
-      const token = token_body['userid'];
-      console.log('Inforrrrrr', token);
-
-    }
     this._userService.getUser(id).subscribe(data => {
-      this.user = (data);
-      console.log('aqui',data);
+      this.user = data;
+      console.log('aqui',data[0]);
+      console.log('Nombre', this.user[0].document_type_id)
     })
+
+
   }
 
   updateUser(id:number, value: any){

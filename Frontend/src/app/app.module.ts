@@ -24,6 +24,7 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { UsersService } from './services/users.service';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { AddTokenInterceptor } from './utils/add-token.interceptor';
+import { authGuard } from './utils/auth.guard';
 
 
 @NgModule({
