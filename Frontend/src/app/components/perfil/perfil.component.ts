@@ -7,6 +7,8 @@ import { User } from 'src/app/models/User';
 import { UserLogin } from 'src/app/models/UserLogin';
 import { RolService } from 'src/app/services/rol.service';
 import { TipoDocService } from 'src/app/services/tipo_doc.service';
+import { UsersService } from 'src/app/services/users.service';
+import { __values } from 'tslib';
 
 @Component({
   selector: 'app-perfil',
@@ -16,18 +18,43 @@ import { TipoDocService } from 'src/app/services/tipo_doc.service';
 export class PerfilComponent implements OnInit {
 
 
+
+
   listTypeDoc: TypeDoc[] = [];
   listRol: Rol[] = [];
   users: User[] = [];
+  user: User[] = [];
 
-  constructor(private _typeDocService: TipoDocService, private _rolService: RolService, private http:HttpClient){
+  constructor(private _typeDocService: TipoDocService,
+     private _rolService: RolService,
+      private http:HttpClient,
+      private _userService: UsersService,
+    ){}
 
-  }
+    userUpdate = {
+      Numero_de_documento: 0,
+      Nombre1: '',
+      Nombre2: '',
+      Apellido1: '',
+      Apellido2: '',
+      rol_id: 2,
+      Fecha_nacimiento: new Date,
+      Direccion: '',
+      user_name: '',
+      password: '',
+
+    }
+
+
+
 
   ngOnInit(): void {
 
     this.getTypeDoc();
     this.getRoles();
+    this.getUsers();
+    this.getUser(34);
+    //this.updateUser()
   }
 
 
@@ -44,6 +71,33 @@ export class PerfilComponent implements OnInit {
       console.log(data);
     })
   }
+
+  getUsers(){
+    this._userService.getUsers().subscribe(data => {
+      this.users = (data);
+      console.log(data);
+    })
+  }
+
+
+
+  getUser(id:number){
+    const token_body = JSON.parse(localStorage.getItem('token') || '{}');
+
+    if(token_body){
+      const token = token_body['userid'];
+      console.log('Inforrrrrr', token);
+
+    }
+    this._userService.getUser(id).subscribe(data => {
+      this.user = (data);
+      console.log('aqui',data);
+    })
+  }
+
+  updateUser(id:number, value: any){
+    this.userUpdate = value;
+}
 
 
 

@@ -57,9 +57,12 @@ export class InicioSesionComponent implements OnInit, OnDestroy {
         console.log(data);
         this.router.navigate(['/perfil']);
       },
-      error: (e: HttpErrorResponse) => {
+      /*error: (e: HttpErrorResponse) => {
         this.msjError(e);
         this.loading = false;
+      }*/
+      error: (e) => {
+        console.log('error en el login', e);
       }
     })
   }

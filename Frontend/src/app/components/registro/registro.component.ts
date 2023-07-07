@@ -16,13 +16,13 @@ import { TypeDoc } from 'src/app/models/TypeDoc';
 })
 export class RegistroComponent implements OnInit {
 
-  document_type_id: number = 0;
+  document_type_id: number = 2;
   Numero_de_documento: number = 0;
   Nombre1: string = '';
   Nombre2: string = '';
   Apellido1: string = '';
   Apellido2: string = '';
-  rol_id: number = 0;
+  rol_id: number = 3;
   Fecha_nacimiento: Date = new Date;
   Direccion: string = '';
   user_name: string = '';
@@ -85,6 +85,8 @@ export class RegistroComponent implements OnInit {
     }
 
     this.loading = true;
+
+    console.log(this.document_type_id,this.Nombre2);
 
     this._userService.registro(user).subscribe({
       next: (v) => {

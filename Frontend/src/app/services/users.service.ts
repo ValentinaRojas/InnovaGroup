@@ -14,7 +14,7 @@ export class UsersService {
 
   private APP_URL:string;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, ) {
     this.APP_URL = 'http://localhost:3000/api'
   }
 
@@ -28,9 +28,20 @@ export class UsersService {
     return this.http.post<string>(`${this.APP_URL}/login`, userlogin);
   }
 
-  getUser(id: string): Observable<User[]> {
+  getUsers(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.APP_URL}/users`);
+  }
+
+
+  getUser(id: number): Observable<User[]> {
     return this.http.get<User[]>(`${this.APP_URL}/users/${id}`);
   }
+
+  updateUser(id: number, value: any): Observable<Object> {
+    return this.http.put(`${this.APP_URL}/users/${id}`, value);
+  }
+
+
 
   /*getUsers() {
     return this.http.get(`${this.API_URI}/users`);

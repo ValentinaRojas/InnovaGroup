@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<div>
+<div class="container">
   <div class="row g-2">
     <div class="col">
       <div class="form-floating mb-3 mt-3">
@@ -8,9 +8,6 @@
           id="floatingSelect"
           aria-label="Floating label select example"
         >
-          <option *ngFor="let i of listTypeDoc" [value]="i.id">
-            {{ i.type }}
-          </option>
         </select>
         <label for="floatingSelect">Tipo de documento</label>
       </div>
@@ -19,6 +16,8 @@
       <div class="form-floating mb-3 mt-3">
         <input
           type="number"
+          [(ngModel)]="userUpdate.Numero_de_documento"
+          #number_document
           class="form-control"
           placeholder="Ingrese el numero de documento"
         />
@@ -31,6 +30,8 @@
       <div class="form-floating">
         <input
           type="text"
+          [(ngModel)]="userUpdate.Nombre1"
+          #Nombre1
           class="form-control"
           placeholder="Ingrese primer nombre"
         />
@@ -41,6 +42,7 @@
       <div class="form-floating">
         <input
           type="text"
+          [(ngModel)]="userUpdate.Nombre2"
           class="form-control"
           placeholder="Ingrese primer nombre"
         />
@@ -53,6 +55,8 @@
       <div class="form-floating mb-3 mt-3">
         <input
           type="text"
+          [(ngModel)]="userUpdate.Apellido1"
+          #Apellido1
           class="form-control"
           placeholder="Ingrese primer apellido"
         />
@@ -63,6 +67,8 @@
       <div class="form-floating mb-3 mt-3">
         <input
           type="text"
+          [(ngModel)]="userUpdate.Apellido2"
+          #Apellido2
           class="form-control"
           placeholder="Ingrese primer apellido"
         />
@@ -73,6 +79,8 @@
   <div class="form-floating">
     <input
       type="date"
+      [(ngModel)]="userUpdate.Fecha_nacimiento"
+      #Fecha_nacimiento
       class="form-control"
       placeholder="Ingrese fecha de nacimiento"
     />
@@ -81,6 +89,8 @@
   <div class="form-floating mb-3 mt-3">
     <input
       type="text"
+      [(ngModel)]="userUpdate.Direccion"
+      #Direccion
       class="form-control"
       placeholder="Ingrese direccion de domicilio"
     />
@@ -103,6 +113,8 @@
   <div class="form-floating mb-3">
     <input
       type="password"
+      [(ngModel)]="userUpdate.password"
+      #password
       class="form-control"
       placeholder="Ingrese contraseña"
     />
@@ -112,4 +124,3 @@
     <button type="button" class="btn btn-primary btn-lg">Aceptar</button>
   </div>
 </div>
-<a routerLink="/inicio-sesion">Volver</a>

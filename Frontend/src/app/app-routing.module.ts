@@ -7,12 +7,15 @@ import { InicioSesionComponent } from './components/inicio-sesion/inicio-sesion.
 import { HomeComponent } from './components/home/home.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 
+//Guards
+import { authGuard } from './utils/auth.guard';
+
 const routes: Routes = [
   { path: '', redirectTo: 'inicio-sesion', pathMatch: 'full' },
   { path: 'registro', component: RegistroComponent },
-  { path: 'inicio-sesion', component: InicioSesionComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'perfil', component: PerfilComponent },
+  { path: 'inicio-sesion', component: InicioSesionComponent},
+  { path: 'home', component: HomeComponent, canActivate:[authGuard] },
+  { path: 'perfil', component: PerfilComponent,canActivate:[authGuard] },
   { path: '**', redirectTo: 'inicio-sesion', pathMatch: 'full' },
 ];
 

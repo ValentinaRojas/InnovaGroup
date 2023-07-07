@@ -1,4 +1,5 @@
 export interface User {
+  id?: number,
   document_type_id: number,
   Numero_de_documento: number,
   Nombre1: string,
