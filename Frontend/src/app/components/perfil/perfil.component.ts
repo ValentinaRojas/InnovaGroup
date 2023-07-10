@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { subscriptionLogsToBeFn } from 'rxjs/internal/testing/TestScheduler';
 import { Rol } from 'src/app/models/Rol';
 import { TypeDoc } from 'src/app/models/TypeDoc';
@@ -29,21 +30,9 @@ export class PerfilComponent implements OnInit {
      private _rolService: RolService,
       private http:HttpClient,
       private _userService: UsersService,
+      private toastr: ToastrService
     ){}
 
-    userUpdate = {
-      Numero_de_documento: 0,
-      Nombre1: '',
-      Nombre2: '',
-      Apellido1: '',
-      Apellido2: '',
-      rol_id: 2,
-      Fecha_nacimiento: new Date,
-      Direccion: '',
-      user_name: '',
-      password: '',
-
-    }
 
 
 
@@ -93,8 +82,13 @@ export class PerfilComponent implements OnInit {
 
   }
 
-  updateUser(id:number, value: any){
-    this.userUpdate = value;
+  updateUser(user: User){
+    this._userService.updateUser(user).subscribe(data => {
+
+      this.toastr.success("Informacion actualizada");
+      console.log('aqui',this.user,data)
+    })
+
 }
 
 

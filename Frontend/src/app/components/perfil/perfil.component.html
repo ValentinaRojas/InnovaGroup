@@ -1,9 +1,10 @@
 <app-navbar></app-navbar>
-<div class="container" *ngIf="user">
+<div class="container">
   <div class="row g-2">
     <div class="col">
       <div class="form-floating mb-3 mt-3">
         <select
+          disabled
           class="form-select"
           id="floatingSelect"
           aria-label="Floating label select example"
@@ -95,6 +96,7 @@
   </div>
   <div class="form-floating mb-3 mt-3">
     <select
+      disabled
       class="form-select"
       id="floatingSelect"
       aria-label="Floating label select example"
@@ -105,7 +107,7 @@
     <label>Tipo de Perfil</label>
   </div>
   <div class="form-floating mb-3 mt-3">
-    <input type="text" [(ngModel)]="user[0].user_name" class="form-control" placeholder="Ingrese usuario" />
+    <input disabled type="text" [(ngModel)]="user[0].user_name" class="form-control" placeholder="Ingrese usuario" />
     <label>Usuario</label>
   </div>
   <div class="form-floating mb-3">
@@ -119,6 +121,6 @@
     <label>Contraseña</label>
   </div>
   <div class="d-grid gap-2 mb-3">
-    <button type="button" class="btn btn-primary btn-lg">Aceptar</button>
+    <button type="button" class="btn btn-bg btn-lg" (click)="updateUser(user[0])">Editar</button>
   </div>
 </div>

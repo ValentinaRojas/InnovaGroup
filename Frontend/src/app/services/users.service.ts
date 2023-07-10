@@ -37,8 +37,8 @@ export class UsersService {
     return this.http.get<User[]>(`${this.APP_URL}/users/${id}`);
   }
 
-  updateUser(id: number, value: any): Observable<Object> {
-    return this.http.put(`${this.APP_URL}/users/${id}`, value);
+  updateUser(user: User): Observable<Object> {
+    return this.http.put(`${this.APP_URL}/users`, user);
   }
 
   loggedIn(){

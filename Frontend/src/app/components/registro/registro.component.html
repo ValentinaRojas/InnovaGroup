@@ -1,6 +1,6 @@
 <div class="wrapper">
   <div *ngIf="!loading" class="body">
-    <img class="logo" src="../../../assets/images/login.png" alt="img login" />
+    <img class="logo" src="../../../assets/images/logo_innovadiesel.jpg" width="300px" alt="img login" />
     <h3>Registrar Usuario</h3>
     <div class="example-1 scrollbar-deep-purple bordered-deep-purple thin">
       <div class="row g-2">
@@ -16,7 +16,7 @@
                 {{ i.type }}
               </option>
             </select>
-            <label>Tipo de Perfil</label>
+            <label>Tipo de documento</label>
           </div>
         </div>
         <div class="col-md">
@@ -134,7 +134,7 @@
       </div>
     </div>
     <div class="d-grid gap-2 mb-3">
-      <button type="button" (click)="addUser()" class="btn btn-primary btn-lg">
+      <button type="button" (click)="addUser()" class="btn btn-bg btn-lg">
         Aceptar
       </button>
     </div>

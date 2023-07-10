@@ -12,11 +12,11 @@
 .scrollbar-deep-purple::-webkit-scrollbar-thumb {
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
-  background-color: #097d36;
+  background-color: #1a9e53;
 }
 
 .scrollbar-deep-purple {
-  scrollbar-color: #097d36 #F5F5F5;
+  scrollbar-color: #1a9e53 #F5F5F5;
 }
 
 .square::-webkit-scrollbar-track {

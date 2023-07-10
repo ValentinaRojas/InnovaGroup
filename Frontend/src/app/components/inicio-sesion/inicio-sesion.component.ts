@@ -6,7 +6,8 @@ import { UsersService } from '../../services/users.service';
 import { UserLogin } from 'src/app/models/UserLogin';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Subscription } from 'rxjs';
+import { Subscription, throwError } from 'rxjs';
+import { User } from 'src/app/models/User';
 
 @Component({
   selector: 'app-inicio-sesion',
@@ -34,6 +35,7 @@ export class InicioSesionComponent implements OnInit, OnDestroy {
 
   inicio_sesion() {
 
+
     //Validamos que el usuario ingrese datos
 
     if(this.user_name == '' || this.password == ''){
@@ -47,22 +49,19 @@ export class InicioSesionComponent implements OnInit, OnDestroy {
       password: this.password
     }
 
-
     this.loading = true;
     this.subRef$ = this._userService.inicio_sesion(userlogin).subscribe({
       next: (data) => {
-        console.log(data);
         data = JSON.stringify(data);
         localStorage.setItem('token', data);
-        console.log(data);
+        console.log('prueba', data);
         this.router.navigate(['/perfil']);
       },
-      /*error: (e: HttpErrorResponse) => {
-        this.msjError(e);
-        this.loading = false;
-      }*/
-      error: (e) => {
-        console.log('error en el login', e);
+      error: (e: HttpErrorResponse) => {
+        if(e.status === 401){
+          this.toastr.error(e.error.msg, 'Error');
+        }
+        return throwError(()=> e )
       }
     })
   }
