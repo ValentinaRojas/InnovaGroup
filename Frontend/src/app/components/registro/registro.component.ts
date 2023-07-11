@@ -26,6 +26,7 @@ export class RegistroComponent implements OnInit {
   Fecha_nacimiento: Date = new Date;
   Direccion: string = '';
   user_name: string = '';
+  correo: string = '';
   password: string = '';
   loading: boolean = false;
 
@@ -63,7 +64,7 @@ export class RegistroComponent implements OnInit {
     //Validar que el usuario ingrese valores
     this.toastr.error('Campos obligatorios', 'Error');
 
-    if(this.user_name == '' || this.Nombre1 == '' || this.Nombre1 == '' || this.Apellido1 == '' || this.Direccion == '' || this.password == '' ){
+    if(this.user_name == '' || this.Nombre1 == '' || this.Nombre1 == '' || this.Apellido1 == '' || this.Direccion == '' || this.correo == ''|| this.password == '' ){
       this.toastr.error('Campos obligatorios', 'Error');
       return; //recorta el hilo de ejecucion
     }
@@ -81,6 +82,7 @@ export class RegistroComponent implements OnInit {
       Fecha_nacimiento: this.Fecha_nacimiento,
       Direccion: this.Direccion,
       user_name: this.user_name,
+      correo: this.correo,
       password: this.password
     }
 

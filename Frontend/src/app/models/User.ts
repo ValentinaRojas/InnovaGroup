@@ -10,5 +10,6 @@ export interface User {
   Fecha_nacimiento: Date,
   Direccion: string,
   user_name: string,
+  correo: string,
   password: string
 }

@@ -117,6 +117,15 @@
         />
         <label>Usuario</label>
       </div>
+      <div class="form-floating mb-3 mt-3">
+        <input
+          type="email"
+          [(ngModel)]="correo"
+          class="form-control"
+          placeholder="Ingrese usuario"
+        />
+        <label>Correo electronico</label>
+      </div>
       <div class="form-floating mb-3">
         <input
           type="password"
@@ -142,67 +151,3 @@
   </div>
   <app-spinner *ngIf="loading"></app-spinner>
 </div>
-
-<!--
-<div class="container pt-5">
-  <div class="row justify-content-center align-items-center">
-    <div class="col-md-4 mb-4 mb-md-0">
-      <div class="card text-center">
-        <div class="card-body">
-          <h3>Registro</h3>
-          <form class="mt-4" >
-            <div class="row">
-              <div class="col">
-                <select class="form-select form-select-lg" required>
-                  <option selected>Tipo de Identificacion</option>
-                  <option value="1">TI</option>
-                  <option value="2">CC</option>
-                  <option value="3">Pasaporte</option>
-                </select>
-              </div>
-              <div class="col">
-                <input type="number" class="form-control form-control-lg" name="num_identificacion" [(ngModel)]="user.Numero_de_documento" placeholder="Numero de Identificacion" required>
-              </div>
-            </div>
-            <div class="col">
-              <select class="form-select" [(ngModel)]="selected" name="select">
-                <option *ngFor="let n of food">{{ n.name }} </option>
-              </select>
-              {{selected}}
-            </div>
-            <div class="row mt-3">
-              <div class="col">
-                <input type="text"  class="form-control form-control-lg" name="nombre1" [(ngModel)]="user.Nombre1" placeholder="Primer nombre o Razón social" required>
-              </div>
-              <div class="col">
-                <input type="text" class="form-control form-control-lg" name="nombre2" [(ngModel)]="user.Nombre2" placeholder="Segundo nombre">
-              </div>
-            </div>
-            <div class="row mt-3">
-              <div class="col">
-                <input type="text"  class="form-control form-control-lg " name="apellido1" [(ngModel)]="user.Apellido1" placeholder="Primer apellido" required>
-              </div>
-              <div class="col">
-                <input type="text" class="form-control form-control-lg" name="apellido2"  [(ngModel)]="user.Apellido2" placeholder="Segundo apellido">
-              </div>
-            </div>
-            <select class="form-select form-select-lg mt-3" required>
-              <option selected>Tipo de Perfil</option>
-              <option value="1">Administrador</option>
-              <option value="2">Empleado</option>
-              <option value="3">Cliente</option>
-            </select>
-            <input type="date"  class="form-control form-control-lg mt-3" name="fecha_nacimiento" [(ngModel)]="user.Fecha_nacimiento" placeholder="Fecha de nacimiento" required>
-            <input type="text"  class="form-control form-control-lg mt-3" name="direccion" [(ngModel)]="user.Direccion" placeholder="Direccion de domicilio" required>
-            <input type="text"  class="form-control form-control-lg mt-3" name="nombre_usuario" [(ngModel)]="user.user_name" placeholder="Nombre de usuario" required>
-            <input type="password"  class="form-control form-control-lg mt-3" name="contraseña" [(ngModel)]="user.password" placeholder="Contraseña" required>
-            <div class="mt-3">
-              <button type="button" class="btn btn-secondary btn-lg rounded-5 " routerLink="/inicio-sesion" (click)="saveNewUser()" style="margin-inline: 20px;">Volver</button>
-              <button type="submit" class="btn btn-secondary btn-lg rounded-5" (click)="saveNewUser()">Registrarse</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>-->
