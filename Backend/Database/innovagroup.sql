@@ -27,7 +27,7 @@ CREATE TABLE `document_type` (
   `type` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `type_UNIQUE` (`type`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,7 +36,7 @@ CREATE TABLE `document_type` (
 
 LOCK TABLES `document_type` WRITE;
 /*!40000 ALTER TABLE `document_type` DISABLE KEYS */;
-INSERT INTO `document_type` VALUES (2,'CC'),(3,'Pasaporte'),(1,'TI');
+INSERT INTO `document_type` VALUES (2,'CC'),(4,'NIT'),(3,'Pasaporte'),(1,'TI');
 /*!40000 ALTER TABLE `document_type` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -84,11 +84,14 @@ CREATE TABLE `users` (
   `rol_id` int NOT NULL,
   `user_name` varchar(45) NOT NULL,
   `password` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `correo` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `user_name_UNIQUE` (`user_name`),
-  CONSTRAINT `users_rol_id_fkey` FOREIGN KEY (`rol_id`) REFERENCES roles(`id`),
-  CONSTRAINT `users_document_id_fkey` FOREIGN KEY (`document_type_id`) REFERENCES document_type(`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `users_rol_id_fkey` (`rol_id`),
+  KEY `users_document_id_fkey` (`document_type_id`),
+  CONSTRAINT `users_document_id_fkey` FOREIGN KEY (`document_type_id`) REFERENCES `document_type` (`id`),
+  CONSTRAINT `users_rol_id_fkey` FOREIGN KEY (`rol_id`) REFERENCES `roles` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -97,6 +100,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (24,2,1193463952,'Juan','','Vasquez','','2001-09-30 00:00:00','mi casa',1,'jocada11','$2a$08$8l8.k/rDVENQNlIqF7/skeqWcLuvE8jKGhRSUNH/eFJDIgdACXctS',''),(26,2,1193463952,'Juan','','Vasquez','','2000-09-30 00:00:00','mi casa',2,'jocada14','$2a$08$wFt9OsJxU4m68bTUze6hR.zL19qYqV7gLOdU4FcSdSC08klt2vSJm','');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -109,4 +113,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-06-27 15:31:31
+-- Dump completed on 2023-07-10 20:33:05
